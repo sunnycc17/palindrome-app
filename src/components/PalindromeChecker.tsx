@@ -64,7 +64,7 @@ const PalindromeChecker: React.FC = () => {
 
         {/* Result */}
         {result && (
-          <p className="mt-3 fw-semibold" data-aos="fade-up">
+          <p className="mt-3 fw-semibold" data-aos="zoom-in">
             {result}
           </p>
         )}
