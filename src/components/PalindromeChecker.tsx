@@ -31,7 +31,7 @@ const PalindromeChecker: React.FC = () => {
   return (
     <div className="d-flex justify-content-center align-items-center min-vh-100">
       <div
-        className="container col-md-6 text-center bg-light-subtle p-4 rounded"
+        className="container col-11 col-md-6 text-center bg-light-subtle p-4 rounded"
         data-aos="fade-up" // AOS animation here
       >
         <h1 className="text-danger" data-aos="zoom-in">
