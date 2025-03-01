@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import AOS from "aos"; // Import AOS
+import "aos/dist/aos.css"; // Import AOS styles
 
 const PalindromeChecker: React.FC = () => {
   const [text, setText] = useState("");
@@ -16,37 +18,56 @@ const PalindromeChecker: React.FC = () => {
 
     setResult(
       filteredInput === reversedInput
-        ? ` ${trimmedText} is a palindrome.`
-        : ` ${trimmedText} is not a palindrome.`
+        ? `${trimmedText} is a palindrome.`
+        : `${trimmedText} is not a palindrome.`
     );
   };
 
+  // Initialize AOS when the component mounts
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // You can set a different duration here if needed
+  }, []);
+
   return (
     <div className="d-flex justify-content-center align-items-center min-vh-100">
-      <div className="container text-center bg-white p-4 rounded shadow col-11 col-sm-8 col-md-6">
-        <h1 className="text-danger">Palindrome Checker</h1>
-        <p className="text-secondary">
-          A palindrome reads the same forward and backward, like{" "}
-          <span className="fst-italic">"bob"</span>.
+      <div
+        className="container col-md-6 text-center bg-light-subtle p-4 rounded"
+        data-aos="fade-up" // AOS animation here
+      >
+        <h1 className="text-danger" data-aos="zoom-in">
+          Palindrome Checker
+        </h1>
+        <p className="text-secondary" data-aos="fade-up">
+          A palindrome is a word, phrase, or number that reads the same forward
+          and backward, like <span className="fst-italic"> "bob"</span>.
         </p>
 
-        {/* Input Field */}
+        {/* Input */}
         <input
           type="text"
-          className="form-control my-3 border-danger focus-ring focus-ring-danger"
+          className="form-control my-3 focus-ring focus-ring-danger"
           placeholder="Enter a word..."
           value={text}
           onChange={(e) => setText(e.target.value)}
           onKeyUp={() => setResult(null)} // Hide result on typing
+          data-aos="fade-up"
         />
 
-        {/* Check Button */}
-        <button className="btn btn-danger" onClick={checkPalindrome}>
+        {/* Button */}
+        <button
+          className="btn btn-danger"
+          onClick={checkPalindrome}
+          data-aos="fade-up"
+        >
           Check Palindrome
         </button>
 
-        {/* Result Display */}
-        {result && <p className="mt-3 fw-semibold">{result}</p>}
+        {/* Result */}
+        {result && (
+          <p className="mt-3 fw-semibold" data-aos="fade-up">
+            {result}
+          </p>
+        )}
       </div>
     </div>
   );
